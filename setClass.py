@@ -12,11 +12,7 @@ class mySet:
 				_k.append(i)
 		self.values = _k
 
-	def __toBrac(self):
-		openBrace = '{'
-		expr = str(self.values)[1:-1]
-		closedBrace = '}'
-		self.values = openBrace + expr + closedBrace
+
 
 	def add(self, value):
 		if str(value) in self.values:
@@ -51,8 +47,10 @@ class mySet:
 		return '{' + str(val)[1:-1] + '}'
 
 	def __str__(self):
-		self.__toBrac()
-		return str(self.values)
+		openBrace = '{'
+		expr = str(self.values)[1:-1]
+		closedBrace = '}'
+		return openBrace + expr + closedBrace
 
 	def __add__(self, other):
 		raise TypeError('unsupported opperand')
@@ -71,7 +69,6 @@ class mySet:
 
 
 if __name__ == '__main__':
-	a = mySet('A', 'B', 'C')
-	print(a.union('D', 'E'))
-	print(a.intersect('C', 'B', 'D'))
+	a = mySet(1,2,4)
+
 
