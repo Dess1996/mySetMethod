@@ -40,8 +40,13 @@ class mySet:
 				continue
 		return '{' + str(res)[1:-1] + '}'
 
-	def union(self, *args):  # TODO: сделать объединение
-		pass
+	def union(self, *args):
+		values = str(self.values[:])[1:-1].split(', ')
+		values = list(map(int, values))
+		for i in args:
+			if str(i) not in values:
+				values.append(i)
+		return '{' + str(values)[1:-1] + '}'
 
 	def __str__(self):
 		self.toBrac()
@@ -66,3 +71,4 @@ class mySet:
 if __name__ == '__main__':
 	a = mySet(2, 3, 4, 5, 5)
 	print(a.intersect(2, 3, 5))
+	print(a.union(6, 7, 8 ))
