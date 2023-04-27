@@ -40,6 +40,9 @@ class mySet:
 				continue
 		return '{' + str(res)[1:-1] + '}'
 
+	def union(self, *args):  # TODO: сделать объединение
+		pass
+
 	def __str__(self):
 		self.toBrac()
 		return str(self.values)
@@ -63,4 +66,3 @@ class mySet:
 if __name__ == '__main__':
 	a = mySet(2, 3, 4, 5, 5)
 	print(a.intersect(2, 3, 5))
-
