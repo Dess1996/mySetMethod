@@ -1,18 +1,18 @@
 class mySet:
 	def __init__(self, *args):
-		self.values = self.convToSet(*args)
+		self.values = ''
+		self.convToSet(*args)
 
-	@staticmethod
-	def convToSet(*args):
+	def convToSet(self, *args):
 		_k = []
 		for i in args:
 			if i in _k:
 				continue
 			else:
 				_k.append(i)
-		return _k
+		self.values = _k
 
-	def toBrac(self):
+	def __toBrac(self):
 		openBrace = '{'
 		expr = str(self.values)[1:-1]
 		closedBrace = '}'
@@ -41,15 +41,17 @@ class mySet:
 		return '{' + str(res)[1:-1] + '}'
 
 	def union(self, *args):
-		values = str(self.values[:])[1:-1].split(', ')
-		values = list(map(int, values))
-		for i in args:
-			if str(i) not in values:
-				values.append(i)
-		return '{' + str(values)[1:-1] + '}'
+		val = self.values[:]
+		a = mySet(*args)[:]
+		for i in a:
+			if i in self.values:
+				continue
+			else:
+				val.append(i)
+		return '{' + str(val)[1:-1] + '}'
 
 	def __str__(self):
-		self.toBrac()
+		self.__toBrac()
 		return str(self.values)
 
 	def __add__(self, other):
@@ -69,6 +71,7 @@ class mySet:
 
 
 if __name__ == '__main__':
-	a = mySet(2, 3, 4, 5, 5)
-	print(a.intersect(2, 3, 5))
-	print(a.union(6, 7, 8 ))
+	a = mySet('A', 'B', 'C')
+	print(a.union('D', 'E'))
+	print(a.intersect('C', 'B', 'D'))
+
